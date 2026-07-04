@@ -97,7 +97,7 @@ export default function FundDetail({ params }: { params: Promise<{ code: string 
             <span className="text-xs pb-0.5" style={{ fontFamily: "var(--font-geist-mono)", color: "var(--text-muted)" }}>{code}</span>
           </div>
           <div className="flex items-center gap-6 mt-2 text-xs" style={{ color: "var(--text-secondary)" }}>
-            <span>净值 <b style={{ color: "var(--text-primary)", fontFamily: "var(--font-geist-mono)" }}>{fmt(info?.nav, 4)}</b></span>
+            <span>净值 <b style={{ color: "var(--text-primary)", fontFamily: "var(--font-geist-mono)" }}>{fmt(info?.nav ?? null, 4)}</b></span>
             <span>近1年 <b style={{ fontFamily: "var(--font-geist-mono)", color: (info?.one_year_return ?? 0) >= 0 ? "var(--gain)" : "var(--loss)" }}>
               {info?.one_year_return != null ? `${info.one_year_return >= 0 ? "+" : ""}${fmt(info.one_year_return)}%` : "-"}
             </b></span>
