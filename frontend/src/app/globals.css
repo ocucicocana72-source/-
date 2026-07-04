@@ -1,0 +1,54 @@
+/* 全局样式 — 暗色终端风格设计令牌 */
+
+@import "tailwindcss";
+
+:root {
+  --surface-deep: #0F1117;
+  --surface-card: #1A1D27;
+  --surface-hover: #232736;
+  --surface-border: #2A2E3D;
+  --text-primary: #E8EAF0;
+  --text-secondary: #8B8FA3;
+  --text-muted: #5A5E72;
+  --gain: #FF4D4F;
+  --loss: #00C48C;
+  --accent: #D4A843;
+  --accent-dim: #8B7A3A;
+  --info: #5B8DEF;
+  --background: var(--surface-deep);
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto-sans), "Noto Sans SC", sans-serif;
+  --font-serif: var(--font-noto-serif), "Noto Serif SC", serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", monospace;
+}
+
+body {
+  background: var(--surface-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans), "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border: none;
+  margin: 1rem 0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-deep); }
+::-webkit-scrollbar-thumb { background: var(--surface-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+.tabular { font-variant-numeric: tabular-nums; }
+.gain { color: var(--gain); }
+.loss { color: var(--loss); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
