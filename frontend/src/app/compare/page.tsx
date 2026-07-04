@@ -1,6 +1,6 @@
 /* 基金对比页 — 暗色终端风格 */
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -22,7 +22,7 @@ const cardStyle = { background: "var(--surface-card)", border: "1px solid var(--
 const inputCls = "px-4 py-2 rounded-lg text-sm outline-none transition-colors";
 const inputStyle = { background: "var(--surface-card)", color: "var(--text-primary)", border: "1px solid var(--surface-border)" };
 
-export default function ComparePage() {
+function ComparePageContent() {
   const searchParams = useSearchParams();
   const [input, setInput] = useState("");
   const [codes, setCodes] = useState<string[]>([]);
@@ -186,5 +186,17 @@ export default function ComparePage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--surface-deep)", color: "var(--text-muted)" }}>
+        加载中...
+      </div>
+    }>
+      <ComparePageContent />
+    </Suspense>
   );
 }
